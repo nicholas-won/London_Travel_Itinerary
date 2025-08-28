@@ -225,4 +225,330 @@
             font-size: 1.4em; 
             color: var(--primary-color);
             margin-bottom: 15px;
-            border-bottom:
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 8px;
+        }
+        .content-panel h2 i { margin-right: 8px; }
+
+        .time-segment { margin-bottom: 18px; }
+        .time-segment h4 {
+            font-family: var(--font-body);
+            font-weight: 600;
+            font-size: 1.05em; 
+            color: var(--text-primary-color);
+            margin-bottom: 10px;
+        }
+        .time-segment h4 i { margin-right: 8px; color: var(--primary-color); font-size: 1.1em; }
+
+        .activity-list, .packing-list { list-style-type: none; padding-left: 0; }
+        .activity-list li, .packing-list li {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 8px;
+            padding: 8px; 
+            border-radius: 6px;
+            transition: background-color 0.2s ease;
+        }
+        .activity-list li:hover, .packing-list li:hover { background-color: #f0f0f0; }
+
+        .activity-list input[type="checkbox"], .packing-list input[type="checkbox"] {
+            margin-right: 10px; 
+            margin-top: 3px;
+            min-width: 16px;
+            min-height: 16px;
+            accent-color: var(--primary-color);
+            flex-shrink: 0;
+        }
+        .activity-list label, .packing-list label {
+            flex-grow: 1;
+            font-size: 0.9em; 
+        }
+        .activity-list input[type="checkbox"]:checked + label, 
+        .packing-list input[type="checkbox"]:checked + label {
+            text-decoration: line-through;
+            color: var(--text-secondary-color);
+        }
+        .packing-list .item-actions button {
+            margin-left: auto; 
+            background: none;
+            border: none;
+            color: #dc3545; 
+            cursor: pointer;
+            font-size: 0.9em;
+            padding: 2px 5px; 
+            line-height: 1; 
+        }
+        .packing-list .item-actions button i {
+            pointer-events: none; 
+        }
+
+
+        .info-link { margin-left: 8px; color: var(--primary-color); text-decoration: none; font-size: 0.8em; }
+        .info-link:hover { text-decoration: underline; }
+        .info-link i { margin-right: 2px; }
+
+        /* Packing List Specifics */
+        .packing-category { margin-bottom: 15px; }
+        .packing-category h3 {
+            font-family: var(--font-body);
+            font-weight: 600;
+            font-size: 1.1em;
+            color: var(--secondary-color);
+            margin-bottom: 10px;
+            padding-bottom: 5px;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .add-packing-item-form {
+            display: flex;
+            gap: 5px; 
+            margin-top: 15px;
+            margin-bottom: 15px;
+        }
+        .add-packing-item-form input[type="text"] {
+            flex-grow: 1;
+            padding: 8px 10px;
+            border: 1px solid var(--border-color);
+            border-radius: 6px; 
+            font-size: 0.9em;
+        }
+        .add-packing-item-form select {
+             padding: 8px 10px;
+             border: 1px solid var(--border-color);
+             border-radius: 6px; 
+             font-size: 0.9em;
+             background-color: white; 
+        }
+        .add-packing-item-form button {
+            padding: 8px 12px;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.9em;
+        }
+         .add-packing-item-form button:hover {
+            background-color: var(--secondary-color);
+        }
+
+
+        .notes-section { margin-top: 20px; padding-top: 12px; border-top: 1px dashed var(--border-color); }
+        .notes-section h5 { font-family: var(--font-body); font-weight: 600; font-size: 1em; color: var(--text-primary-color); margin-bottom: 8px; }
+        .notes-section h5 i { margin-right: 8px; color: var(--primary-color); }
+        .notes-section textarea { width: 100%; min-height: 60px; padding: 8px; border: 1px solid var(--border-color); border-radius: 6px; font-family: var(--font-body); font-size: 0.9em; }
+        .notes-section textarea:focus { outline: none; border-color: var(--primary-color); box-shadow: 0 0 0 2px rgba(0,123,255,0.2); }
+        
+        .flexibility-warning, .key-info { margin: 15px 0; padding: 12px; border-left: 4px solid var(--accent-color); background-color: #fff9e0; border-radius: 6px; font-size: 0.85em; }
+        .key-info { background-color: #e6f7ff; border-left-color: var(--primary-color); }
+
+        .app-footer { text-align: center; padding: 15px; margin-top: 20px; font-size: 0.85em; color: var(--text-secondary-color); }
+        .opportunity { font-style: italic; color: #333; }
+
+        /* Desktop and larger screen adjustments */
+        @media (min-width: 768px) {
+            .app-header h1 { font-size: 2em; }
+            .content-wrapper { padding: 20px 25px; }
+            .main-nav-tabs { justify-content: center; padding: 10px; }
+            .main-tab { padding: 12px 20px; font-size: 0.95em; margin: 0 5px;}
+            .content-panel { padding: 20px 25px; }
+            .content-panel h2 { font-size: 1.6em; }
+            .activity-list label, .packing-list label { font-size: 0.95em; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="app-container">
+        <header class="app-header">
+            <h1>London Navigator Pro</h1>
+        </header>
+
+        <div class="content-wrapper">
+            <section class="search-section">
+                <input type="search" id="activitySearchInput" placeholder="Search activities (e.g., Tower, Museum)...">
+                <p id="searchResultsInfo" class="search-results-info" style="display:none;"></p>
+            </section>
+
+            <details class="weather-section-details" id="weatherDetailsSection">
+                <summary><i class="fas fa-sun"></i> London Weather Forecast <span id="weatherSummaryInfo" style="font-weight:normal; font-size:0.8em; margin-left: auto; padding-right:10px;"></span></summary>
+                <div id="weatherWidget">
+                    <p>Loading weather...</p>
+                </div>
+            </details>
+
+
+            <nav class="main-nav-tabs" id="mainTabsNav">
+                </nav>
+
+            <div id="panelsContainer">
+                </div>
+
+            <div class="flexibility-warning">
+                <p><strong><i class="fas fa-exclamation-triangle"></i> Flexibility First!</strong> This is your guide, not a rigid script. London is full of surprises – embrace them!</p>
+            </div>
+
+            <div class="key-info">
+                <h3><i class="fas fa-key"></i> Key / Reminders:</h3>
+                <p><span class="opportunity">Greggs opp.</span> = Greggs Opportunity</p>
+                <p><span class="opportunity">Spoons:</span> = Wetherspoons Pub</p>
+                <p>(Book ahead!) for popular spots & shows.</p>
+                <p>Carry ID for nightlife. Check club dress codes.</p>
+                <p>Use Oyster/Contactless for TFL.</p>
+            </div>
+
+        </div> <footer class="app-footer">
+            <p>Have an amazing trip!</p>
+        </footer>
+    </div> <script>
+    // --- Itinerary Data ---
+    // NOTE: Day 1 and Day 8 have been swapped to accommodate the football match on Aug 30th.
+    const itineraryData = [
+        { 
+            id: "day0", 
+            title: "Day 0: Fri, Aug 29th", 
+            shortTitle: "Day 0",
+            icon: "fas fa-plane-departure",
+            theme: "Travel Day",
+            segments: [
+                { title: "All Day", icon: "fas fa-clock", activities: [
+                    { id: "d0a1", text: "Focus on getting to the airport and pre-flight prep." }
+                ]},
+                { title: "Evening", icon: "fas fa-concierge-bell", activities: [
+                    { id: "d0a2", text: "<strong>4:30 PM (LAX Time): Depart from LAX.</strong> Try to get some rest!" }
+                ]}
+            ]
+        },
+        {
+            // THIS IS THE NEW DAY 1 (FORMERLY DAY 8) - MATCH DAY
+            id: "day1",
+            title: "Day 1: Sat, Aug 30th",
+            shortTitle: "Day 1",
+            icon: "fas fa-futbol",
+            theme: "Arrival & Match Day!",
+            defaultActive: true, 
+            segments: [
+                { title: "Morning (Arrival)", icon: "fas fa-plane-arrival", activities: [
+                    { id: "d1a1", text: "<strong>10:55 AM:</strong> Arrive at LGW. Clear immigration, collect baggage." },
+                    { id: "d1a2", text: "<strong>12:00 PM - 1:00 PM:</strong> Travel to Princes Gardens, South Kensington." },
+                    { id: "d1a3", text: "<strong>1:00 PM - 1:30 PM:</strong> Quick check-in, drop bags, change into Spurs gear!" }
+                ]},
+                { title: "Afternoon (Tottenham vs Bournemouth)", icon: "fas fa-trophy", activities: [
+                    { id: "d1a4", text: "<strong>1:30 PM - 2:00 PM:</strong> Grab a very quick lunch to go. <span class='opportunity'>Greggs Opportunity!</span>" },
+                    { id: "d1a5", text: "<strong>2:00 PM - 3:00 PM:</strong> Travel to Tottenham Hotspur Stadium (Tube & Overground journey)." },
+                    { id: "d1a6", text: "<strong>3:00 PM - 5:00 PM:</strong> <strong>PREMIER LEAGUE MATCH: Tottenham vs Bournemouth!</strong> Enjoy the atmosphere." },
+                    { id: "d1a7", text: "<strong>5:00 PM - 6:30 PM:</strong> Post-match crowd dispersal and travel back to South Kensington." }
+                ]},
+                { title: "Evening (Recovery)", icon: "fas fa-moon", activities: [
+                    { id: "d1a8", text: "<strong>6:30 PM - 7:30 PM:</strong> Relax and freshen up at the accommodation." },
+                    { id: "d1a9", text: "<strong>7:30 PM onwards:</strong> Relaxed local dinner in South Kensington. Find a comfortable pub or restaurant nearby to unwind after a massive travel and match day." }
+                ]},
+                { title: "Crucial Note", icon: "fas fa-ticket-alt", activities: [
+                    { id: "d1a10", text: "<strong>TICKET INFO:</strong> Premier League tickets are extremely hard to get. You MUST secure tickets far in advance through official channels (club membership) or official resellers. Do not rely on buying them on the day." }
+                ]}
+            ]
+        },
+        {
+            id: "day2", title: "Day 2: Sun, Aug 31st", shortTitle: "Day 2", icon: "fas fa-landmark", theme: "Royal Westminster & South Bank",
+            segments: [
+                { title: "Morning (Royal Sights)", icon: "fas fa-coffee", activities: [ { id: "d2a1", text: "<strong>8:00 AM - 9:00 AM:</strong> Breakfast. <span class='opportunity'>Greggs Opportunity!</span>" }, { id: "d2a2", text: "<strong>9:00 AM - 9:30 AM:</strong> Travel: Tube from South Kensington to Westminster Station." }, { id: "d2a3", text: "<strong>9:30 AM - 12:30 PM:</strong> <strong>Westminster Abbey.</strong> (Book tickets!).", link: {url: "https://www.westminster-abbey.org/", text: "Abbey"} } ]},
+                { title: "Midday & Lunch (Political Heart)", icon: "fas fa-gavel", activities: [ { id: "d2a4", text: "<strong>12:30 PM - 1:30 PM:</strong> Walk past Houses of Parliament & Big Ben. Photos in Parliament Square." }, { id: "d2a5", text: "<strong>1:30 PM - 2:30 PM:</strong> <strong>Lunch in Westminster.</strong> Pub: The Red Lion. Cafe: Wesley's Cafe." } ]},
+                { title: "Afternoon (History & Views)", icon: "fas fa-history", activities: [ { id: "d2a6", text: "<strong>2:30 PM - 4:30 PM:</strong> <strong>Churchill War Rooms.</strong> (Book tickets!).", link: {url: "https://www.iwm.org.uk/visits/churchill-war-rooms", text: "War Rooms"} }, { id: "d2a7", text: "<strong>4:30 PM - 5:00 PM:</strong> Walk across Westminster Bridge." }, { id: "d2a8", text: "<strong>5:00 PM - 5:45 PM:</strong> <strong>London Eye.</strong> (Book tickets!).", link: {url: "https://www.londoneye.com/", text: "Eye"} }, { id: "d2a9", text: "<strong>5:45 PM - 7:00 PM:</strong> Explore the South Bank – street performers, atmosphere." } ]},
+                { title: "Evening (Riverside)", icon: "fas fa-glass-cheers", activities: [ { id: "d2a10", text: "<strong>7:00 PM - 8:30 PM:</strong> <strong>Dinner on the South Bank.</strong> Wahaca, The Anchor & Hope, OXO Tower Brasserie." }, { id: "d2a11", text: "<strong>8:30 PM - 10:00 PM:</strong> Riverside Drinks/Pubs. Founders Arms, Doggett's Coat and Badge." }, { id: "d2a12", text: "<strong>10:00 PM onwards:</strong> Stroll or Tube from Waterloo to South Kensington." } ]}
+            ]
+        },
+        {
+            id: "day3", title: "Day 3: Mon, Sept 1st", shortTitle: "Day 3", icon: "fas fa-chess-rook", theme: "Towering History & Bridges",
+            segments: [
+                { title: "Morning (Historic Tower)", icon: "fas fa-shield-alt", activities: [ { id: "d3a1", text: "<strong>8:30 AM - 9:30 AM:</strong> Breakfast." }, { id: "d3a2", text: "<strong>9:30 AM - 10:00 AM:</strong> Travel: Tube from South Kensington to Tower Hill Station." }, { id: "d3a3", text: "<strong>10:00 AM - 1:00 PM:</strong> <strong>Tower of London.</strong> (Book tickets!). Explore Crown Jewels, White Tower, meet Beefeaters.", link: {url: "https://www.hrp.org.uk/tower-of-london/", text: "Tower"} } ]},
+                { title: "Lunch (Tower Views)", icon: "fas fa-drumstick-bite", activities: [ { id: "d3a4", text: "<strong>1:00 PM - 2:00 PM:</strong> <strong>Lunch near Tower of London.</strong> <span class='opportunity'>Spoons Opportunity:</span> The Liberty Bounds. Alternative: The Hung, Drawn & Quartered." } ]},
+                { title: "Afternoon (Bridges & Ships)", icon: "fas fa-water", activities: [ { id: "d3a5", text: "<strong>2:00 PM - 3:00 PM:</strong> Walk across <strong>Tower Bridge.</strong> Consider Tower Bridge Exhibition.", link: {url: "https://www.towerbridge.org.uk/", text: "Bridge"} }, { id: "d3a6", text: "<strong>3:00 PM - 4:30 PM:</strong> Explore south of Tower Bridge: Queen's Walk, Hays Galleria." }, { id: "d3a7", text: "<strong>4:30 PM - 6:00 PM:</strong> Option 1: <strong>HMS Belfast.</strong>", link: {url: "https://www.iwm.org.uk/visits/hms-belfast", text: "HMS"} }, { id: "d3a7b", text: "Option 2: <strong>Shakespeare's Globe Theatre Tour.</strong>", link: {url: "https://www.shakespearesglobe.com/", text: "Globe"} } ]},
+                { title: "Evening (City Pubs & West End Bound)", icon: "fas fa-beer", activities: [ { id: "d3a8", text: "<strong>6:00 PM - 7:00 PM:</strong> Travel towards West End. Or, pub stop: The George Inn (Borough) or Ye Olde Cheshire Cheese (Fleet St)." }, { id: "d3a9", text: "<strong>7:00 PM - 7:30 PM:</strong> Pre-dinner drinks in Soho/Covent Garden." }, { id: "d3a10", text: "<strong>7:30 PM - 9:00 PM:</strong> <strong>Dinner in Soho/Covent Garden.</strong> Dishoom Carnaby, Bocca di Lupo, Pizza Pilgrims, Flat Iron." }, { id: "d3a11", text: "<strong>9:00 PM onwards:</strong> Bars (Mondays quieter). Ronnie Scott's Jazz Club (book!), Experimental Cocktail Club (book!), traditional Soho pubs." } ]}
+            ]
+        },
+        {
+            id: "day4", title: "Day 4: Tues, Sept 2nd", shortTitle: "Day 4", icon: "fas fa-university", theme: "Museum Hopping",
+            segments: [
+                { title: "Morning (Science)", icon: "fas fa-atom", activities: [ { id: "d4a1", text: "<strong>9:00 AM - 10:00 AM:</strong> Leisurely breakfast." }, { id: "d4a2", text: "<strong>10:00 AM - 1:00 PM:</strong> <strong>Science Museum.</strong> Free entry. Explore at your pace.", link: {url: "https://www.sciencemuseum.org.uk/", text: "Science"} } ]},
+                { title: "Lunch (South Ken)", icon: "fas fa-hamburger", activities: [ { id: "d4a3", text: "<strong>1:00 PM - 2:00 PM:</strong> <strong>Lunch.</strong> Science Museum cafe, <span class='opportunity'>Greggs Opportunity,</span> Comptoir Libanais." } ]},
+                { title: "Afternoon (Art & Design)", icon: "fas fa-palette", activities: [ { id: "d4a4", text: "<strong>2:00 PM - 5:00 PM:</strong> <strong>Victoria & Albert Museum (V&A).</strong> Free entry. Focus on galleries of interest.", link: {url: "https://www.vam.ac.uk/", text: "V&A"} }, { id: "d4a5", text: "<strong>5:00 PM - 6:30 PM:</strong> Relax at Princes Gardens or explore Hyde Park/Albert Memorial." } ]},
+                { title: "Evening (Kensington Charm)", icon: "fas fa-wine-glass-alt", activities: [ { id: "d4a6", text: "<strong>6:30 PM - 7:30 PM:</strong> Pre-dinner drinks: Revisit a student-day pub or try The Anglesea Arms." }, { id: "d4a7", text: "<strong>7:30 PM - 9:00 PM:</strong> <strong>Dinner in Kensington/Chelsea.</strong> Sticky Fingers, or local restaurants." }, { id: "d4a8", text: "<strong>9:00 PM onwards:</strong> Chic Bars (optional): Percy's (Kensington High St), Bluebird Chelsea." } ]}
+            ]
+        },
+        {
+            id: "day5", title: "Day 5: Wed, Sept 3rd", shortTitle: "Day 5", icon: "fas fa-theater-masks", theme: "Palaces & West End Show",
+            segments: [
+                { title: "Morning (Royal Watch)", icon: "fas fa-crown", activities: [ { id: "d5a1", text: "<strong>8:30 AM - 9:15 AM:</strong> Breakfast." }, { id: "d5a2", text: "<strong>9:15 AM - 9:45 AM:</strong> Travel to Buckingham Palace area." }, { id: "d5a3", text: "<strong>9:45 AM - 10:30 AM:</strong> Arrive at Buckingham Palace, find spot for Changing of the Guard." }, { id: "d5a4", text: "<strong>10:45 AM - 11:30 AM (approx.):</strong> <strong>Buckingham Palace: Changing of the Guard ceremony</strong> (Confirm schedule!).", link: {url: "https://changing-guard.com/dates-buckingham-palace.html", text: "Guard"} } ]},
+                { title: "Lunch & Midday (Park & Gallery)", icon: "fas fa-carrot", activities: [ { id: "d5a5", text: "<strong>11:30 AM - 12:30 PM:</strong> Walk through St. James's Park towards Trafalgar Square." }, { id: "d5a6", text: "<strong>12:30 PM - 1:30 PM:</strong> <strong>Lunch near Trafalgar Square.</strong> Five Guys, Pret, The Chandos (pub)." }, { id: "d5a7", text: "<strong>1:30 PM - 3:30 PM:</strong> <strong>National Gallery.</strong> Free entry.", link: {url: "https://www.nationalgallery.org.uk/", text: "Gallery"} } ]},
+                { title: "Afternoon (City Buzz)", icon: "fas fa-shopping-bag", activities: [ { id: "d5a8", text: "<strong>3:30 PM - 4:00 PM:</strong> Short walk to Piccadilly Circus." }, { id: "d5a9", text: "<strong>4:00 PM - 5:30 PM:</strong> Explore Piccadilly Circus, Leicester Square, Regent St/Oxford St (window shopping)." } ]},
+                { title: "Evening (West End Show!)", icon: "fas fa-microphone-alt", activities: [ { id: "d5a10", text: "<strong>5:30 PM - 7:00 PM:</strong> <strong>Early Dinner in Soho/Covent Garden (Pre-Theatre).</strong> Many options available." }, { id: "d5a11", text: "<strong>7:00 PM - 7:30 PM:</strong> Arrive at the Theatre." }, { id: "d5a12", text: "<strong>7:30 PM - 10:15 PM (approx.):</strong> <strong>West End Show: Book of Mormon or Les Misérables</strong> (Book tickets MONTHS in advance!).", link: {url: "https://officiallondontheatre.com/", text: "Tickets"} }, { id: "d5a13", text: "<strong>10:15 PM onwards:</strong> Post-show drinks in Soho, or head back to South Kensington." } ]}
+            ]
+        },
+        {
+            id: "day6", title: "Day 6: Thurs, Sept 4th", shortTitle: "Day 6", icon: "fas fa-guitar", theme: "Camden & King's Cross",
+            segments: [
+                { title: "Morning (Camden Market)", icon: "fas fa-store-alt", activities: [ { id: "d6a1", text: "<strong>9:00 AM - 10:00 AM:</strong> Breakfast." }, { id: "d6a2", text: "<strong>10:00 AM - 10:30 AM:</strong> Travel: Tube to Camden Town Station." }, { id: "d6a3", text: "<strong>10:30 AM - 1:30 PM:</strong> Explore <strong>Camden Market.</strong> Stalls, atmosphere, street art." } ]},
+                { title: "Lunch (Camden Eats)", icon: "fas fa-utensil-spoon", activities: [ { id: "d6a4", text: "<strong>1:30 PM - 2:30 PM:</strong> <strong>Lunch at Camden Market</strong> (street food!) or pub: The Hawley Arms." } ]},
+                { title: "Afternoon (Literary & Architectural)", icon: "fas fa-book-reader", activities: [ { id: "d6a5", text: "<strong>2:30 PM - 3:00 PM:</strong> Travel: Bus or Tube to King's Cross St. Pancras." }, { id: "d6a6", text: "<strong>3:00 PM - 3:30 PM:</strong> <strong>Platform 9 ¾ at King's Cross.</strong> Photo op." }, { id: "d6a7", text: "<strong>3:30 PM - 5:00 PM:</strong> <strong>British Library.</strong> Treasures Gallery.", link: {url: "https://www.bl.uk/", text: "Library"} }, { id: "d6a8", text: "<strong>5:00 PM - 6:00 PM:</strong> Explore <strong>Coal Drops Yard</strong> near King's Cross." } ]},
+                { title: "Evening (King's Cross & Islington)", icon: "fas fa-cocktail", activities: [ { id: "d6a9", text: "<strong>6:00 PM - 7:00 PM:</strong> Drinks at Coal Drops Yard or a King's Cross pub." }, { id: "d6a10", text: "<strong>7:00 PM - 8:30 PM:</strong> <strong>Dinner in King's Cross/Islington.</strong> Dishoom, Hoppers, German Gymnasium. Or explore Upper Street, Islington." }, { id: "d6a11", text: "<strong>8:30 PM onwards:</strong> Explore pubs/bars in Islington (The Wenlock Arms, Ladybird Bar) or head back." } ]}
+            ]
+        },
+        {
+            id: "day7", title: "Day 7: Fri, Sept 5th", shortTitle: "Day 7", icon: "fas fa-anchor", theme: "Greenwich & East London",
+            segments: [
+                { title: "Morning (Maritime Greenwich)", icon: "fas fa-ship", activities: [ { id: "d7a1", text: "<strong>9:00 AM - 9:30 AM:</strong> Breakfast." }, { id: "d7a2", text: "<strong>9:30 AM - 10:30 AM:</strong> Travel to Greenwich (Thames Clipper for scenic route, or DLR)." }, { id: "d7a3", text: "<strong>10:30 AM - 12:30 PM:</strong> <strong>Royal Observatory Greenwich.</strong> Prime Meridian, views. (Book tickets!).", link: {url: "https://www.rmg.co.uk/royal-observatory", text: "Observatory"} } ]},
+                { title: "Lunch & Midday (Park & Pub)", icon: "fas fa-leaf", activities: [ { id: "d7a4", text: "<strong>12:30 PM - 1:30 PM:</strong> Walk down through <strong>Greenwich Park.</strong>" }, { id: "d7a5", text: "<strong>1:30 PM - 2:30 PM:</strong> <strong>Lunch in Greenwich.</strong> <span class='opportunity'>Spoons Opportunity:</span> The Gate Clock. Pub: The Gipsy Moth. Greenwich Market stalls." } ]},
+                { title: "Afternoon (Market & Clipper Ship)", icon: "fas fa-compass", activities: [ { id: "d7a6", text: "<strong>2:30 PM - 4:00 PM:</strong> <strong>Cutty Sark.</strong> Explore the historic tea clipper. (Book tickets!).", link: {url: "https://www.rmg.co.uk/cutty-sark", text: "Cutty Sark"} }, { id: "d7a7", text: "<strong>4:00 PM - 5:30 PM:</strong> Explore <strong>Greenwich Market.</strong>" }, { id: "d7a8", text: "<strong>5:30 PM - 6:30 PM:</strong> Travel back towards Central or head East to Shoreditch." } ]},
+                { title: "Evening & Night Out (East London)", icon: "fas fa-compact-disc", activities: [ { id: "d7a9", text: "<strong>6:30 PM - 7:30 PM:</strong> Arrive Shoreditch, explore street art." }, { id: "d7a10", text: "<strong>7:30 PM - 9:00 PM:</strong> <strong>Dinner in Shoreditch.</strong> Gloria Trattoria, Boxpark, Smoking Goat." }, { id: "d7a11", text: "<strong>9:00 PM - 11:00 PM:</strong> Pre-Club Bars in Shoreditch. Callooh Callay, Nightjar (book!)." }, { id: "d7a12", text: "<strong>11:00 PM onwards:</strong> <strong>Friday Night Clubbing in Shoreditch.</strong> XOYO, Village Underground, Queen of Hoxton (Book tickets!)." } ]}
+            ]
+        },
+        {
+            // THIS IS THE NEW DAY 8 (FORMERLY DAY 1)
+            id: "day8", title: "Day 8: Sat, Sept 6th", shortTitle: "Day 8", icon: "fas fa-music", theme: "Notting Hill & Big Night Out",
+            segments: [
+                { title: "Morning (Notting Hill Market)", icon: "fas fa-shopping-cart", activities: [
+                    { id: "d8a1", text: "<strong>9:00 AM - 10:00 AM:</strong> Breakfast." },
+                    { id: "d8a2", text: "<strong>10:00 AM - 10:30 AM:</strong> Travel: Tube to Notting Hill Gate." },
+                    { id: "d8a3", text: "<strong>10:30 AM - 1:30 PM:</strong> Explore <strong>Portobello Road Market.</strong> Antiques, fashion, food. Soak in Saturday vibe." }
+                ]},
+                { title: "Lunch & Midday (Notting Hill Charm)", icon: "fas fa-camera-retro", activities: [
+                    { id: "d8a4", text: "<strong>1:30 PM - 2:30 PM:</strong> <strong>Lunch in Notting Hill.</strong> Street food from market, The Churchill Arms (pub), Granger & Co. (cafe)." }
+                ]},
+                 { title: "Afternoon Exploration", icon: "fas fa-walking", activities: [
+                    { id: "d8a5", text: "<strong>2:30 PM - 4:00 PM:</strong> Stroll: Show your brother Imperial College London campus." },
+                    { id: "d8a6", text: "<strong>4:00 PM - 5:30 PM:</strong> Quick visit to Natural History Museum or V&A Museum." },
+                    { id: "d8a7", text: "<strong>5:30 PM - 6:30 PM:</strong> Walk through Hyde Park, relax before the evening." }
+                ]},
+                { title: "Big Saturday Night Out!", icon: "fas fa-cocktail", activities: [
+                    { id: "d8a8", text: "<strong>6:30 PM - 8:00 PM:</strong> <strong>Pre-Clubbing Dinner.</strong> Soho/Covent Garden: Barrafina, Temper Soho." },
+                    { id: "d8a9", text: "<strong>8:00 PM - 10:00 PM:</strong> <strong>Pre-Club Bars.</strong> Soho: Swift, Thirst Bar. Near Mayfair: Cahoots (book!)." },
+                    { id: "d8a10", text: "<strong>10:30 PM onwards:</strong> <strong>Saturday Night Clubbing (Book/Guestlist!).</strong> Fabric, Ministry of Sound, Heaven, or late bars." }
+                ]}
+            ]
+        },
+        {
+            id: "day9", title: "Day 9: Sun, Sept 7th", shortTitle: "Day 9", icon: "fas fa-image", theme: "Culture, Roast & Farewell",
+            segments: [
+                { title: "Morning (Modern Art & Views)", icon: "fas fa-paint-brush", activities: [ { id: "d9a1", text: "<strong>9:30 AM - 10:30 AM:</strong> Leisurely breakfast." }, { id: "d9a2", text: "<strong>10:30 AM - 11:00 AM:</strong> Travel: Tube to Blackfriars/Southwark for Tate Modern." }, { id: "d9a3", text: "<strong>11:00 AM - 1:00 PM:</strong> <strong>Tate Modern.</strong> Explore. Views from Blavatnik Building. Walk Millennium Bridge.", link: {url: "https://www.tate.org.uk/visit/tate-modern", text: "Tate"} } ]},
+                { title: "Sunday Roast Lunch!", icon: "fas fa-drumstick-bite", activities: [ { id: "d9a4", text: "<strong>1:00 PM - 1:30 PM:</strong> Walk towards St. Paul's Cathedral. Admire outside." }, { id: "d9a5", text: "<strong>1:30 PM - 3:00 PM:</strong> <strong>Sunday Roast! (Book ahead!).</strong> Pubs near Borough: The George Inn, The Market Porter. Or near South Ken: The Hereford Arms." } ]},
+                { title: "Afternoon (Final Explorations)", icon: "fas fa-church", activities: [ { id: "d9a6", text: "<strong>3:00 PM - 5:00 PM:</strong> Option 1: Explore <strong>Borough Market</strong> (Sunday vibe) & Southwark Cathedral. Option 2: Final park walk (Regent's Park). Option 3: Last-minute souvenirs." }, { id: "d9a7", text: "<strong>5:00 PM - 6:30 PM:</strong> Return to South Kensington, start packing, relax." } ]},
+                { title: "Farewell Evening", icon: "fas fa-glass-cheers", activities: [ { id: "d9a8", text: "<strong>6:30 PM - 7:30 PM:</strong> Relaxed pre-dinner drink at a local South Kensington pub." }, { id: "d9a9", text: "<strong>7:30 PM - 9:00 PM:</strong> <strong>Farewell Dinner.</strong> Launceston Place (splurge?) or a favourite cuisine/area." }, { id: "d9a10", text: "<strong>9:00 PM onwards:</strong> Final London pub visit (The Zetland Arms) or quiet evening." } ]}
+            ]
+        },
+        { 
+            id: "day10", 
+            title: "Day 10: Mon, Sept 8th", 
+            shortTitle: "Day 10",
+            icon: "fas fa-plane",
+            theme: "Departure Day",
+            segments: [
+                { title: "Early Morning", icon: "fas fa-sun", activities: [{ id: "d10a1", text: "<strong>6:00 AM - 6:30 AM:</strong> Wake up, final packing checks." }, { id: "d10a2", text: "<strong>6:30 AM - 7:00 AM:</strong> Quick breakfast/coffee. Check out." }]},
+                { title: "Travel to Airport", icon: "fas fa-taxi", activities: [{ id: "d10a3", text: "<strong>7:00 AM - 8:00 AM:</strong> Travel from South Kensington to LGW (Tube & Gatwick Express)." }]},
+                { title: "At Airport", icon: "fas fa-passport", activities: [{ id: "d10a4", text: "<strong>8:00 AM - 10:00 AM:</strong> Arrive LGW. Bag drop, security, find gate." }]},
+                { title: "Departure", icon: "fas fa-paper-plane", activities: [{ id: "d10a5", text: "<strong>10:00 AM - 10:25 AM:</strong> Relax at gate, final calls." }, { id: "d10a6", text: "<strong>10:25 AM: Depart from LGW to LAX.</strong> Safe travels home!" }]}
+            ]
+        }
+    ];
+
+    const packingCategories = [
+        { name: "Clothes", idPrefix: "pack_clothes_", items: ["Underwear (10x)", "Socks (10x)", "T-shirts (7-8x)", "Long-sleeve shirts (2-3x)", "Jeans/Pants (2-3x)", "Shorts (if weather appropriate)", "Sweater/Fleece (1-2x)", "Light Jacket (waterproof)", "Smart Casual Outfit (for shows/dinners)", "Pajamas", "Comfortable Walking Shoes (2 pairs)", "Dressier Shoes (optional)"] },
+        { name: "Toiletries", idPrefix: "pack_toiletries_", items: ["Toothbrush & Toothpaste", "Shampoo & Conditioner (travel size)", "Body Wash/Soap", "Deodorant", "Face Wash & Moisturizer", "Sunscreen", "Basic First-Aid (plasters,
